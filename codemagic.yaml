@@ -3,3 +3,11 @@ workflows:
     environment:
       groups:
         - group-name
+  scripts:
+    - name: Launch emulator
+      script: |
+        set -e # exit on first failed command
+
+        cd $ANDROID_HOME/tools
+        emulator -avd emulator &
+        adb wait-for-device
